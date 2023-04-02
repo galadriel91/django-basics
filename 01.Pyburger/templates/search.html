@@ -6,6 +6,10 @@
 </head>
 <body>
     <h1>버거 검색페이지 입니다.</h1>
+    <form method="GET">
+        <input type="text" name="keyword">
+        <button type="submit">입력</button>
+    </form>
     <div>검색 결과</div>
     {% for item in burger%}
         <div>
