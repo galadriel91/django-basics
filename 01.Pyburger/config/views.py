@@ -12,4 +12,9 @@ def burger(request):
     return render(request , 'burger.html' , context)
 
 def search(request):
-    return render(request , 'search.html')
+    keyword = request.GET.get('keyword')
+    burger = Burger.objects.filter(name__contains = keyword)
+    context = {
+        "burger" : burger
+    }
+    return render(request , 'search.html' , context)
