@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from config.views import main,burger
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('' , main),
+    path('burger/', burger)
 ]
