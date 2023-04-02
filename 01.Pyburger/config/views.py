@@ -13,7 +13,10 @@ def burger(request):
 
 def search(request):
     keyword = request.GET.get('keyword')
-    burger = Burger.objects.filter(name__contains = keyword)
+    if keyword is not None:
+        burger = Burger.objects.filter(name__contains = keyword)
+    else:
+        burger = Burger.objects.none()
     context = {
         "burger" : burger
     }
