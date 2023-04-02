@@ -10,3 +10,6 @@ def burger(request):
         "burgers" : burger
     }
     return render(request , 'burger.html' , context)
+
+def search(request):
+    return render(request , 'search.html')
