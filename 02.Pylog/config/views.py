@@ -27,7 +27,8 @@ def add(request):
     if request.method == 'POST':
         Post.objects.create(
             title = request.POST['title'],
-            content = request.POST['content']
+            content = request.POST['content'],
+            thumbnail = request.FILES['thumbnail']
         )
         return redirect('/posts/')
     return render(request , 'add.html')
