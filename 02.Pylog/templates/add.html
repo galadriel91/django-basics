@@ -10,6 +10,22 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Add</h1>
+    <div id="navbar">
+        <span>글 작성</span>
+    </div>
+    <div id="post-add">
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                <label>제목</label>
+                <input type="text" name="title">
+            </div>
+            <div>
+                <label>내용</label>
+                <textarea name="content"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">등록</button>
+        </form>
+    </div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from blog.models import Post
 
 def main(request):
@@ -19,4 +19,10 @@ def detail(request , post_id):
     return render(request , 'detail.html' , context)
 
 def add(request):
+    if request.method == 'POST':
+        Post.objects.create(
+            title = request.POST['title'],
+            content = request.POST['content']
+        )
+        return redirect('/posts/')
     return render(request , 'add.html')
