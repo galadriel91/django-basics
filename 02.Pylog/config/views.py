@@ -11,8 +11,12 @@ def post(request):
     }
     return render(request , 'post.html' , context)
 
-def detail(request):
-    return render(request , 'detail.html')
+def detail(request , post_id):
+    post = Post.objects.get(id = post_id)
+    context = {
+        'post' : post
+    }
+    return render(request , 'detail.html' , context)
 
 def add(request):
     return render(request , 'add.html')

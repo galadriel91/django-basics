@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('' , main),
     path('posts/' , post),
-    path('detail/' , detail),
+    path('detail/<int:post_id>' , detail),
     path('add/' , add)
 ]
 
