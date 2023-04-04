@@ -1,5 +1,5 @@
 from django.shortcuts import render , redirect
-from blog.models import Post
+from blog.models import Post, Comment
 
 def main(request):
     return render(request , 'main.html')
@@ -13,6 +13,11 @@ def post(request):
 
 def detail(request , post_id):
     post = Post.objects.get(id = post_id)
+    if request.method == 'POST':
+        Comment.objects.create(
+            post = post,
+            content = request.POST['comment']
+        )
     context = {
         'post' : post
     }
