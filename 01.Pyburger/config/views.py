@@ -12,3 +12,6 @@ def lists(request):
         'burgers': burgers
     }
     return render(request , 'list.html' , context)
+
+def search(requeset):
+    return render(requeset , 'search.html')
