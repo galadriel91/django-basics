@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="ko">
+{% include 'head.html' %}
+<body>
+    <h1>리스트 페이지입니다.</h1>
+    <ul>
+        {% for burger in burgers %}
+            <li>
+                {{ burger.title }}
+                <p>가격 : {{ burger.price }}</p>
+                <p>칼로리 : {{ burger.calories }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
