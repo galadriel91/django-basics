@@ -1,7 +1,15 @@
 {% extends 'index.html' %}
 
 {% block content %}
-    <div>
-        서치
-    </div>
+    <form method="GET">
+        <input type="text" name="title">
+        <button type="submit">검색</button>
+    </form>
+     {% for burger in item %}
+        <div>
+            <p>{{burger.title}}</p>
+            <p>{{burger.price}}원</p>
+            <p>{{burger.calories}}kcal</p>
+        </div>
+    {% endfor %}
 {% endblock %}

@@ -14,4 +14,12 @@ def burgerMain(request):
     return render(request, 'main.html')
 
 def burgerSearch(request):
-    return render(request, 'search.html')
+    title = request.GET.get('title')
+    if title is not None:
+        item = Burger.objects.filter(title__contains=title)
+    else:
+        item = Burger.objects.none()
+    context = {
+        'item':item
+    }
+    return render(request, 'search.html' , context)
