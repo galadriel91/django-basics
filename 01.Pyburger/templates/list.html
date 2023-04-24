@@ -1,7 +1,13 @@
 {% extends 'index.html' %}
 
 {% block content %}
-    <div>
-        버거 리스트
-    </div>
+    <ul>
+        {% for burger in burgers %}
+            <li>
+                <p>{{burger.title}}</p>
+                <p>{{burger.price}}원</p>
+                <p>{{burger.calories}}kcal</p>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

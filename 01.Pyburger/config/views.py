@@ -1,5 +1,14 @@
 from django.shortcuts import render
 
+from burger.models import Burger
+
 
 def burgerList(request):
-    return render(request, 'list.html')
+    burgers = Burger.objects.all()
+    context={
+        'burgers': burgers
+    }
+    return render(request, 'list.html', context)
+
+def burgerMain(request):
+    return render(request, 'main.html')
