@@ -17,10 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from config.views import burgerList, burgerMain
+from config.views import burgerList, burgerMain, burgerSearch
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('lists/', burgerList),
+    path('search/', burgerSearch),
     path('', burgerMain),
 ]

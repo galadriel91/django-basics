@@ -12,3 +12,6 @@ def burgerList(request):
 
 def burgerMain(request):
     return render(request, 'main.html')
+
+def burgerSearch(request):
+    return render(request, 'search.html')
