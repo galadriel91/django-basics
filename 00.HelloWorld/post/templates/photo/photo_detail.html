@@ -7,15 +7,11 @@
     <title>Photo App</title>
 </head>
 <body>
-    <h1><a href="">사진 목록 페이지</a></h1>
-    {% for post in posts %}
+    <h1>{{ post.title }}</h1>
     <div>
-        <h2>
-            <a href="{% url 'main_item' pk=post.pk %}">{{post.title}}</a>
-        </h2>
         <img src="{{ post.image }}" alt="{{post.title}}" width="300">
+        <p>{{post.description}}</p>
         <p>{{post.author}}, {{post.price}}원</p>
     </div>
-    {% endfor %}
 </body>
 </html>
