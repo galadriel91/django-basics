@@ -8,18 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>버거리스트</title>
     <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
-    <h1>버거리스트</h1>
-    <ul>
-        {% for burger in burgers %}
-        <li>
-            <img src="{{ burger.image }}" alt="{{burger.title}}">
-            <p>{{burger.title}}</p>
-            <p>{{burger.price}} 원</p>
-            <p>{{burger.calories}} 칼로리</p>
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h1>버거리스트</h1>
+        <ul>
+            {% for burger in burgers %}
+            <li>
+                <img src="{{ burger.image }}" alt="{{burger.title}}">
+                <p>{{burger.title}}</p>
+                <p>{{burger.price}} 원</p>
+                <p>{{burger.calories}} 칼로리</p>
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="" class="btn">검색</a>
+    </div>
 </body>
 </html>
