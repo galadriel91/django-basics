@@ -53,3 +53,9 @@ def done_list(request):
         'dones':dones
     }
     return render(request, 'todo/todo_done.html', context)
+
+def todo_done(request, pk):
+    todo = Todo.objects.get(id=pk)
+    todo.complte = True
+    todo.save()
+    return redirect('todo_list')
