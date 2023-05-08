@@ -11,17 +11,20 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
-    {% for post in posts %}
+    <div class="container">
         <ul>
+            {% for post in posts %}
             <li>
                 <a href="{% url 'post_detail' pk=post.pk %}">
                     <img src="{{ post.image }}" alt="{{post.title}}">
                     <p>{{post.title}}</p>
                     <p>{{post.author}}</p>
-                    <p>{{post.price}} 공적</p>
+                    <p>공적력 : {{post.price}}</p>
                 </a>
             </li>
+            {% endfor %}
         </ul>
-    {% endfor %}
+        <a href="{% url 'post_add' %}" class="plus btn">추가</a>
+    </div>
 </body>
 </html>

@@ -11,15 +11,18 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
-    <div>
-        <a href="{% url 'post_edit' pk=post.pk%}">수정하기</a>
-    </div>
-    <div>
-        <img src="{{ post.image }}" alt="{{post.title}}">
-        <p>{{post.title}}</p>
-        <p>{{post.author}}</p>
-        <div>{{post.description | linebreaksbr }}</div>
-        <p>{{post.price}} 공적</p>
+    <div class="container">
+        <div>
+            <img src="{{ post.image }}" alt="{{post.title}}">
+            <p>{{post.title}}</p>
+            <p>{{post.author}}</p>
+            <p>{{post.description | linebreaksbr }}</p>
+            <p>공적력 : {{post.price}}</p>
+        </div>
+        <div>
+            <a href="{% url 'post_edit' pk=post.pk%}" class="btn">수정하기</a>
+            <a href="/" class="btn back">돌아가기</a>
+        </div>
     </div>
 </body>
 </html>

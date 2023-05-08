@@ -11,10 +11,13 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
-    <form method="POST">
-        {% csrf_token %}
-        {{forms.as_p}}
-        <button type="submit">등록</button>
-    </form>
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            {{forms.as_p}}
+            <button type="submit" class="btn edit">등록</button>
+            <a href="/" class="btn back">돌아가기</a>
+        </form>
+    </div>
 </body>
 </html>
