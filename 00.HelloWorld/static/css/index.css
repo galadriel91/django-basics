@@ -16,3 +16,7 @@ ul li{
     border: 1px solid #222; border-radius: 10px;
     text-align: center;
 }
+
+input, textarea{
+    border: 1px solid #222;
+}
