@@ -46,3 +46,10 @@ def todo_edit(request, pk):
         'form':form
     }
     return render(request, 'todo/todo_edit.html', context)
+
+def done_list(request):
+    dones = Todo.objects.filter(complte=True)
+    context={
+        'dones':dones
+    }
+    return render(request, 'todo/todo_done.html', context)
