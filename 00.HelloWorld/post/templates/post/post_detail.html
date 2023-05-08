@@ -12,6 +12,9 @@
 </head>
 <body>
     <div>
+        <a href="{% url 'post_edit' pk=post.pk%}">수정하기</a>
+    </div>
+    <div>
         <img src="{{ post.image }}" alt="{{post.title}}">
         <p>{{post.title}}</p>
         <p>{{post.author}}</p>

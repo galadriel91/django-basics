@@ -11,17 +11,10 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
-    {% for post in posts %}
-        <ul>
-            <li>
-                <a href="{% url 'post_detail' pk=post.pk %}">
-                    <img src="{{ post.image }}" alt="{{post.title}}">
-                    <p>{{post.title}}</p>
-                    <p>{{post.author}}</p>
-                    <p>{{post.price}} 공적</p>
-                </a>
-            </li>
-        </ul>
-    {% endfor %}
+    <form method="POST">
+        {% csrf_token %}
+        {{forms.as_p}}
+        <button type="submit">등록</button>
+    </form>
 </body>
 </html>
