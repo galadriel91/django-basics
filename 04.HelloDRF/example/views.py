@@ -8,25 +8,41 @@ from .serializers import BookSerializers
 
 # Create your views here.
 
-@api_view(['GET'])
-def HelloApi(request):
-    return Response('Hello Djanogo!')
-
-@api_view(['GET', 'POST'])
-def BooksApi(request):
-    if request.method == 'GET':
+class BooksApi(APIView):
+    def get(self, request):
         books = Book.objects.all()
         serializer = BookSerializers(books, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    elif request.method == 'POST':
+    def post(self, request):
         serializer = BookSerializers(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)    
+    
 
-@api_view(['GET'])
-def BookApi(request, bid):
-    book = get_object_or_404(Book, bid=bid)
-    serializer = BookSerializers(book)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+class BookApi(APIView):
+    def get(self, request, bid):
+        book = get_object_or_404(Book, bid=bid)
+        serializer = BookSerializers(book)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    
+# @api_view(['GET', 'POST'])
+# def BooksApi(request):
+#     if request.method == 'GET':
+#         books = Book.objects.all()
+#         serializer = BookSerializers(books, many=True)
+#         return Response(serializer.data, status=status.HTTP_200_OK)
+#     elif request.method == 'POST':
+#         serializer = BookSerializers(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_200_OK)
+#         return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
+
+# @api_view(['GET'])
+# def BookApi(request, bid):
+#     book = get_object_or_404(Book, bid=bid)
+#     serializer = BookSerializers(book)
+#     return Response(serializer.data, status=status.HTTP_200_OK)

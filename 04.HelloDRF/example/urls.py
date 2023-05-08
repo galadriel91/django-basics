@@ -1,8 +1,7 @@
 from django.urls import path, include
-from .views import HelloApi, BooksApi, BookApi
+from .views import BooksApi, BookApi
 
 urlpatterns = [
-    path('hello/', HelloApi),
-    path('fbv/books/', BooksApi),
-    path('fbv/books/<int:bid>/', BookApi),
+    path('fbv/books/', BooksApi.as_view()),
+    path('fbv/books/<int:bid>/', BookApi.as_view()),
 ]
