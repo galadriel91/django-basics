@@ -13,15 +13,17 @@
 </head>
 <body>
     <div class="container">
-        <h1>상세보기</h1>
+        <h1>TODO 추가하기</h1>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">{{todo.title}}</h5>
-                            <p class="card-text">{{ todo.cotent }}</p>
-                            <a href="{% url 'todo_list' %}" class="btn btn-primary">목록으로</a>
+                            <form method="POST">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit" class="btn btn-primary">등록</button>
+                            </form>
                         </div>
                     </div>
                 </div>
