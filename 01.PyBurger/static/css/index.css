@@ -5,7 +5,7 @@
 }
 
 ul{
-    margin-top: 1rem;
+    margin-top: 1rem; margin-bottom: 1rem;
     display: flex; text-align: center;
 }
 
@@ -36,4 +36,19 @@ p{
 
 .btn:hover{
     background: #666;
+}
+
+form{
+    display: flex; justify-content: center; align-items: center; 
+    flex-direction: column;
+}
+
+input{
+    width: 200px; height: 35px;
+    border: 1px solid #222; border-radius: 5px;
+}
+
+button.btn{
+    width: 200px; height: 35px;
+    cursor: pointer;
 }

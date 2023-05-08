@@ -8,3 +8,14 @@ def burger_list(request):
         'burgers' : burgers
     }
     return render(request, 'burger_list.html' , context)
+
+def burger_search(request):
+    keyword = request.GET.get('keyword')
+    if keyword is not None:
+        search = Burger.objects.filter(title__contains = keyword)
+    else:
+        search = Burger.objects.none()
+    context={
+        'search':search
+    }
+    return render(request, 'burger_search.html', context)

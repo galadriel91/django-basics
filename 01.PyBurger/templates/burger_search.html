@@ -1,20 +1,19 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>버거리스트</title>
+    <title>버거 검색</title>
     <link rel="stylesheet" href="{% static 'css/reset.css' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
     <div class="container">
-        <h1>버거리스트</h1>
         <ul>
-            {% for burger in burgers %}
+            {% for burger in search %}
             <li>
                 <img src="{{ burger.image }}" alt="{{burger.title}}">
                 <p>{{burger.title}}</p>
@@ -23,7 +22,10 @@
             </li>
             {% endfor %}
         </ul>
-        <a href="search/" class="btn">검색</a>
+        <form method="GET">
+            <input type="text" name="keyword">
+            <button type="submit" class="btn">검색</button>
+        </form>
     </div>
 </body>
 </html>
