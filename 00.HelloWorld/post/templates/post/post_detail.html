@@ -11,17 +11,12 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
-    {% for post in posts %}
-        <ul>
-            <li>
-                <a href="{% url 'post_detail' post.pk %}">
-                    <img src="{{ post.image }}" alt="{{post.title}}">
-                    <p>{{post.title}}</p>
-                    <p>{{post.author}}</p>
-                    <p>{{post.price}} 공적</p>
-                </a>
-            </li>
-        </ul>
-    {% endfor %}
+    <div>
+        <img src="{{ post.image }}" alt="{{post.title}}">
+        <p>{{post.title}}</p>
+        <p>{{post.author}}</p>
+        <div>{{post.description | linebreaksbr }}</div>
+        <p>{{post.price}} 공적</p>
+    </div>
 </body>
 </html>

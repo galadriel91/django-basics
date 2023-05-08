@@ -1,0 +1,18 @@
+body{
+    width: 100vw; height: 100vh;
+    display: flex; justify-content: center; align-items: center;
+}
+
+img{
+    height: 300px; border-radius: 10px;
+}
+
+ul{
+    display: flex; justify-content: center;
+}
+
+ul li{
+    margin: 0 10px;
+    border: 1px solid #222; border-radius: 10px;
+    text-align: center;
+}
