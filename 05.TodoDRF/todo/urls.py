@@ -1,5 +1,6 @@
 from django.urls import path
+from .views import TodosAPIView
 
 urlpatterns = [
-    # path('', ),
+    path('', TodosAPIView.as_view()),
 ]
