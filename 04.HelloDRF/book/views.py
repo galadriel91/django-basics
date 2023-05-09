@@ -12,6 +12,13 @@ class BooksAPIView(APIView):
         books = Book.objects.all()
         serialzer = BookSerializers(books, many=True)
         return Response(serialzer.data, status=status.HTTP_200_OK)
+    def post(self, request):
+        serialzer = BookSerializers(data = request.data)
+        if serialzer.is_valid():
+            serialzer.save()
+            return Response(serialzer.data, status=status.HTTP_200_OK)
+        return Response(serialzer.errors, status=status.HTTP_400_BAD_REQUEST)
+
     
 class BookAPIView(APIView):
     def get(self, request, pk):
