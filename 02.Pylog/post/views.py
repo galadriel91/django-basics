@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404 , redirect
 from .models import Post, Comment
 
 # Create your views here.
@@ -16,3 +16,13 @@ def PostDetail(request , pk):
         "post": post
     }
     return render(request, 'post_detail.html', context)
+
+def PostAdd(request):
+    if request.method == 'POST':
+        Post.objects.create(
+            title = request.POST['title'],
+            content = request.POST['content'],
+            thumbnail = request.FILES['thumbnail']
+        )
+        return redirect('PostList')
+    return render(request, 'post_add.html')
