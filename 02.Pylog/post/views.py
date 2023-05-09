@@ -12,6 +12,11 @@ def PostList(request):
 
 def PostDetail(request , pk):
     post = get_object_or_404(Post, pk=pk)
+    if request.method == 'POST':
+        Comment.objects.create(
+            post = post,
+            content = request.POST['content']
+        )
     context = {
         "post": post
     }

@@ -27,6 +27,13 @@
                 <li>아직 댓글이 없습니다</li>
             {% endfor %}
         </ul>
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                <textarea name="content"></textarea>
+            </div>
+            <button type="submit">등록</button>
+        </form>
     </div>
 </body>
 </html>
