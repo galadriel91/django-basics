@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post</title>
     <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
     <div class="container">
@@ -15,18 +16,15 @@
         <ul>
             {% for post in posts %}
             <li>
-                <div>
-                    <div>
-                        <h3>{{post.title}}</h3>
-                        <p>{{post.content}}</p>
+                <a href="">
+                    <div class="text">
+                        <div>
+                            <h3>{{post.title}}</h3>
+                            <p>{{post.content}}</p>
+                        </div>
+                        <img src="{{ post.thumbnail.url }}" alt="{{ post.title }}">
                     </div>
-                    <img src="" alt="">
-                </div>
-                <ul>
-                    {% for comment in post.comment_set.all %}
-                        <li>{{comment.content}}</li>
-                    {% endfor %}
-                </ul>
+                </a>
             </li>
             {% endfor %}
         </ul>

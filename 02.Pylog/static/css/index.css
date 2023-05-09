@@ -1,0 +1,36 @@
+.container{
+    width: 100vw; height: 100vh;
+    display: flex; justify-content: center; align-items: center;
+    flex-direction: column;
+}
+
+h1{
+    font-size: 25px; color: #222;
+    margin-bottom: 20px;
+}
+
+img{
+    width: 200px;
+}
+
+li{
+    margin-bottom: 20px;
+    width: 700px; padding: 5px; box-sizing: border-box;
+    border-radius: 5px; border: 1px solid #222;
+}
+
+.text{
+    margin-left: 10px;
+    display: flex; align-items: center; justify-content: space-between;
+}
+
+h3{
+    font-size: 20px; color: #222;
+    margin-bottom: 20px;
+}
+
+p{
+    overflow: hidden;
+    width: 450px; white-space: nowrap; text-overflow: ellipsis;
+    font-size: 16px; color: #999
+}
