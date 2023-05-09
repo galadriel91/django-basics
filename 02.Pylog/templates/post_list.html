@@ -8,5 +8,23 @@
 </head>
 <body>
     <h1>포스트</h1>
+    <ul>
+        {% for post in posts %}
+        <li>
+            <div>
+                <div>
+                    <h3>{{post.title}}</h3>
+                    <p>{{post.content}}</p>
+                </div>
+                <img src="" alt="">
+            </div>
+            <ul>
+                {% for comment in post.comment_set.all %}
+                    <li>{{comment.content}}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

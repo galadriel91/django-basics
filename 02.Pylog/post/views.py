@@ -4,4 +4,8 @@ from .models import Post, Comment
 # Create your views here.
 
 def PostList(request):
-    return render(request, 'post_list.html')
+    posts = Post.objects.all()
+    context = {
+        "posts": posts
+    }
+    return render(request, 'post_list.html', context)
