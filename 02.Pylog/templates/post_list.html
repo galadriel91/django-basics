@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5,26 +7,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
 </head>
 <body>
-    <h1>포스트</h1>
-    <ul>
-        {% for post in posts %}
-        <li>
-            <div>
+    <div class="container">
+        <h1>한나라와 한삼걸</h1>
+        <ul>
+            {% for post in posts %}
+            <li>
                 <div>
-                    <h3>{{post.title}}</h3>
-                    <p>{{post.content}}</p>
+                    <div>
+                        <h3>{{post.title}}</h3>
+                        <p>{{post.content}}</p>
+                    </div>
+                    <img src="" alt="">
                 </div>
-                <img src="" alt="">
-            </div>
-            <ul>
-                {% for comment in post.comment_set.all %}
-                    <li>{{comment.content}}</li>
-                {% endfor %}
-            </ul>
-        </li>
-        {% endfor %}
-    </ul>
+                <ul>
+                    {% for comment in post.comment_set.all %}
+                        <li>{{comment.content}}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
