@@ -17,10 +17,14 @@ class BooksAPIView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Gene
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
         
-class BookAPIView(mixins.RetrieveModelMixin, generics.GenericAPIView):
+class BookAPIView(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializers
     lookup_field = 'bid'
 
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
