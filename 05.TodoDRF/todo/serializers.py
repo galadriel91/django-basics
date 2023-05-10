@@ -14,3 +14,11 @@ class TodoSerializer(serializers.ModelSerializer):
         fields = (
             'id', 'title', 'content', 'created', 'important', 'done'
         )
+
+
+class CreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Todo
+        fields = (
+            'title', 'content', 'important'
+        )
