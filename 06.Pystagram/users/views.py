@@ -4,6 +4,8 @@ from .forms import LoginForm
 
 # Create your views here.
 def login_view(request):
+    if request.user.is_authenticated:
+        return redirect('Feeds')
     if request.method == 'POST':
         forms = LoginForm(data=request.POST)
         if forms.is_valid():
