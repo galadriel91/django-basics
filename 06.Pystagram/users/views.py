@@ -23,3 +23,7 @@ def login_view(request):
         forms = LoginForm()
         context={'forms':forms}
         return render(request, 'users/login_view.html' , context)
+    
+def logout_view(request):
+    logout(request)
+    return redirect('Login')    
