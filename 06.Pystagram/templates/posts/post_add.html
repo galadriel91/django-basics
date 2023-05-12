@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <div id="post-add">
+        <h1>Post 작성</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <label for="id_images">이미지</label>
+                <input id="id_images" name="images" type="file" multiple>
+            </div>
+            {{ form.as_p }}
+            <button type="submit">게시</button>
+        </form>
+    </div>
+</body>
+</html>
