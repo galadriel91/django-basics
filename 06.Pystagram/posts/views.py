@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from django.http import HttpResponseRedirect
-from .models import Post, Comment, PostImage
+from .models import Post, Comment, PostImage, HashTag
 from .forms import CommentForm, PostForm
 
 # Create your views here.
@@ -49,3 +49,9 @@ def post_add(request):
         form = PostForm()
         context={'form' : form}
         return render(request, 'posts/post_add.html' , context)
+
+def tags(request, tag_name):
+    tag = HashTag.objects.get(name = tag_name)
+    posts = Post.objects.filter(tags = tag)
+    context={'tag_name':tag, 'posts':posts}
+    return render(request, 'posts/tags.html', context)    
