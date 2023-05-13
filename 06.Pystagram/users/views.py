@@ -35,3 +35,7 @@ def signup_view(request):
         forms = SignupForm()
     context={'forms':forms}
     return render(request, 'users/signup_view.html' , context)
+
+def logout_view(request):
+    logout(request)
+    return redirect('Login')
