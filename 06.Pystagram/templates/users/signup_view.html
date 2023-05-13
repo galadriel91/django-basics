@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
-    <div id="login">
-        <form method="post">
+    <div id="signup">
+        <form method="post" enctype="multipart/form-data">
             <h1>Pystagram</h1>
             {% csrf_token %}
             {{ forms.as_p }}
-            <button type="submit" class="btn btn-login">등록</button>
-            <a href="{% url 'Signup' %}">회원가입</a>
+            <button type="submit" class="btn btn-login">회원가입</button>
+            <a href="{% url 'Login' %}">로그인</a>
         </form>
     </div>
 </body>
