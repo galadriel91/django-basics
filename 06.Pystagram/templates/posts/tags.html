@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav>
+    <h1>
+        <a href="">Pystagram</a>
+    </h1>
+    <a href="">Add Post</a>
+    <a href="">Logout</a>
+</nav>
+<div id="tags">
+    <header class="tags-header">
+        <h2>#{{ tag_name }}</h2>
+        <div>게시물 1,094</div>
+    </header>
+    <div class="post-grid-container">
+        {% for post in posts %}
+            <div class="post-grid">
+                <img src="{{post.postimage_set.first.photo.url}}" alt="">
+            </div>
+        {% empty %}
+            <p>검색된 게시물이 없습니다.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
