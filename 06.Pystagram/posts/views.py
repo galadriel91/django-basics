@@ -42,6 +42,13 @@ def post_add(request):
                     post = post,
                     photo = image
                 )
+
+            tag_string = request.POST.get('tags')
+            if tag_string:
+                tag_names = [tag_name.strip() for tag_name in tag_string.split(',')]
+                for tag_name in tag_names:
+                    tag, _ = HashTag.objects.get_or_create(name = tag_name)
+                    post.tags.add(tag)
             return redirect('Feeds')    
     else:
         forms = PostForm()
