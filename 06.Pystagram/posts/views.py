@@ -65,3 +65,9 @@ def tags_view(request , tag_name):
         posts = Post.objects.filter(tags = tag)
     context={'tag_name':tag_name, 'posts':posts}
     return render(request, 'posts/tags.html', context)
+
+def post_detail(request, post_id):
+    post = Post.objects.get(id = post_id)
+    forms = CommentForm()
+    context = {'post':post , 'comment_form':forms}
+    return render(request, 'posts/post_detail.html', context)

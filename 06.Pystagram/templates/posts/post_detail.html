@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="post-detail">
+    {% include 'nav.html' %}
+    <div id="feeds" class="post-container">
+        {% include 'posts/post.html' %}
+    </div>
+</div>
+<script>
+    const elems = document.getElementsByClassName('splide')
+    for(let i = 0; i < elems.length; i++){
+        new Splide(elems[i]).mount()
+    }
+</script>
+{% endblock %}
