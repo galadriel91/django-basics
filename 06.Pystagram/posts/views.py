@@ -44,14 +44,27 @@ def post_add(request):
                     post = post,
                     photo = image_file
                 )
+        
+            tag_string = request.POST.get('tags')
+            if tag_string:
+                tag_names = [tag_name.strip() for tag_name in tag_string.split(',')]
+                for tag_name in tag_names:
+                    tag, _ = HashTag.objects.get_or_create(name = tag_name)
+                    post.tags.add(tag)
+
             return HttpResponseRedirect(f'/posts/feeds/#post-{post.id}')
+
     else:
         form = PostForm()
         context={'form' : form}
         return render(request, 'posts/post_add.html' , context)
 
 def tags(request, tag_name):
-    tag = HashTag.objects.get(name = tag_name)
-    posts = Post.objects.filter(tags = tag)
-    context={'tag_name':tag, 'posts':posts}
+    try:
+        tag = HashTag.objects.get(name = tag_name)
+    except HashTag.DoesNotExist:
+        posts = Post.objects.none()
+    else:
+        posts = Post.objects.filter(tags = tag)
+    context={'tag_name':tag_name, 'posts':posts}
     return render(request, 'posts/tags.html', context)    
