@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav>
+    <h1>
+        <a href="{% url 'Feeds' %}">Pystagram</a>
+    </h1>
+    <a href="{% url 'Logout' %}">Logout</a>
+    <a href="{% url 'AddPost' %}">Add Post</a>
+</nav>
+<div id="post-add">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <label for="id_image">이미지</label>
+            <input id="id_image" name="images" type="file" multiple>
+        </div>
+        {{ forms.as_p }}
+        <button type="submit">등록</button>
+    </form>
+</div>
+{% endblock %}
