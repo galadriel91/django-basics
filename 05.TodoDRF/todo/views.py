@@ -2,7 +2,7 @@ from rest_framework import views, status, generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import get_object_or_404
-from .serializers import TodoSerializers, TodosSerializers, TodoCreateSerializers
+from .serializers import TodoSerializers
 from .models import Todo
 
 # Create your views here.
@@ -15,11 +15,9 @@ class TodoAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TodoSerializers
     lookup_field = 'id'
     
-class TodoDoneAPIView(APIView):
-    def get(self, request):
-        dones = Todo.objects.filter(done = True)    
-        serializer = TodosSerializers(dones, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+class TodoDoneAPIView(generics.ListAPIView):
+    queryset = Todo.objects.filter(done=True)
+    serializer_class = TodoSerializers
 
 class TodoDoneCheckAPIView(APIView):
     def get(self, request, id):
