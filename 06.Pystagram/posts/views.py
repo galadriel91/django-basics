@@ -17,3 +17,9 @@ def addForm(request):
             comment.user = request.user
             comment.save()
             return redirect('Feeds')
+
+def removeForm(request , id):
+    if request.method == 'POST':
+        forms = Comment.objects.get(id = id)
+        forms.delete()
+        return redirect('Feeds')
