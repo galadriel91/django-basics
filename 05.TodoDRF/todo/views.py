@@ -10,18 +10,10 @@ class TodosAPIView(generics.ListCreateAPIView):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializers
 
-class TodoAPIView(APIView):
-    def get(self, request, id):
-        todo = get_object_or_404(Todo, id=id)
-        serializer = TodoSerializers(todo)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    def put(self, request, id):
-        todo = get_object_or_404(Todo, id=id)
-        serializer = TodoCreateSerializers(todo, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class TodoAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializers
+    lookup_field = 'id'
     
 class TodoDoneAPIView(APIView):
     def get(self, request):
