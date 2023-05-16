@@ -13,7 +13,7 @@ def loginView(request):
             user = authenticate(username = username, password = password)
             if user:
                 login(request, user)
-                return redirect('https://www.naver.com')
+                return redirect('Feeds')
             else:
                 forms.errors(None, '로그인에 실패했습니다.')
         else:
@@ -51,8 +51,7 @@ def signupView(request):
                 description = description
             )
             login(request, user)
-            # return render(request, 'users/signup_view.html', context) 
-            return redirect('https://www.naver.com')    
+            return redirect('Feeds')
 
     else:
         forms = SignupForm()
@@ -61,4 +60,4 @@ def signupView(request):
 
 def logoutView(requet):
     logout(requet)
-    return redirect('Feeds')
+    return redirect('Login')

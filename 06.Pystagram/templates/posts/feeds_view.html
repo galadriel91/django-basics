@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav>
+    <h1>Pystagram</h1>
+    <a href="{% url 'Logout' %}">Logout</a>
+</nav>
+<div>
+    {{user.username}}
+</div>
+{% endblock %}
