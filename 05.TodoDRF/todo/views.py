@@ -18,7 +18,6 @@ class TodosAPIView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
 class TodoAPIView(APIView):
     def get(self, request, id):
         todo = get_object_or_404(Todo, id=id)
@@ -31,3 +30,9 @@ class TodoAPIView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class TodoDoneAPIView(APIView):
+    def get(self, request):
+        dones = Todo.objects.filter(done = True)    
+        serializer = TodosSerializers(dones, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
