@@ -6,17 +6,9 @@ from .serializers import TodoSerializers, TodosSerializers, TodoCreateSerializer
 from .models import Todo
 
 # Create your views here.
-class TodosAPIView(APIView):
-    def get(self, request):
-        todos = Todo.objects.all()
-        serializer = TodosSerializers(todos, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    def post(self, request):
-        serializer = TodoCreateSerializers(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class TodosAPIView(generics.ListCreateAPIView):
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializers
 
 class TodoAPIView(APIView):
     def get(self, request, id):
