@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Post, PostImage, Comment
+from .models import Post, PostImage, Comment, HashTag
 from .forms import CommentForm, PostForm
 
 # Create your views here.
@@ -43,3 +43,13 @@ def addPost(request):
         forms = PostForm()
     context={'forms':forms}
     return render(request, 'posts/add_feeds.html', context)    
+
+def tagsResult(request, tagName):
+    try:
+        tag = HashTag.objects.get(name = tagName)
+    except HashTag.DoesNotExist:
+        posts = Post.objects.none()
+    else:
+        posts = Post.objects.filter(tags = tag)    
+    context={'tagName':tagName, 'posts':posts}
+    return render(request, 'posts/tags.html', context)
