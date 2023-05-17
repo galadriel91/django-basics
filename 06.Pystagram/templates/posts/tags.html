@@ -16,7 +16,9 @@
         {% for post in posts %}
             <div class="post-grid">
                 {% if post.postimage_set.first.photo %}
-                    <img src="{{ post.postimage_set.first.photo.url }}" alt="">
+                    <a href="{% url 'DetailFeed' post.id %}">
+                        <img src="{{ post.postimage_set.first.photo.url }}" alt="">
+                    </a>
                 {% endif %}
             </div>
             {% empty %}

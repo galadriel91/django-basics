@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import feedView, addForm, removeForm, addPost , tagsResult
+from .views import feedView, addForm, removeForm, addPost , tagsResult, detailFeeds
 
 urlpatterns = [
     path('feeds/', feedView, name="Feeds"),
@@ -7,4 +7,5 @@ urlpatterns = [
     path('remove_form/<int:id>/', removeForm, name="RemoveForm"),
     path('add_post/', addPost, name="AddPost"),
     path('tags/<str:tagName>/', tagsResult, name="TagResult"),
+    path('feeds/<int:id>/', detailFeeds, name="DetailFeed"),
 ]

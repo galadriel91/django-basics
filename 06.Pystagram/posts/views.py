@@ -59,3 +59,10 @@ def tagsResult(request, tagName):
         posts = Post.objects.filter(tags = tag)    
     context={'tagName':tagName, 'posts':posts}
     return render(request, 'posts/tags.html', context)
+
+
+def detailFeeds(request, id):
+    post = Post.objects.get(id = id)
+    forms = PostForm()
+    context={'post':post, 'forms':forms}
+    return render(request, 'posts/post_view.html' , context)
