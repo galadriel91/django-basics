@@ -15,6 +15,10 @@
             <input id="id_image" name="images" type="file" multiple>
         </div>
         {{ forms.as_p }}
+        <div>
+            <label for="id_tags">해쉬태그</label>
+            <input id="id_tags" name="tags" type="text" placeholder="쉼표(,)로 구분하여 여러 태그 입력"> 
+        </div>
         <button type="submit">등록</button>
     </form>
 </div>
