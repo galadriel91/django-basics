@@ -12,3 +12,11 @@ class LoginForm(forms.Form):
         widget=forms.TextInput(
             attrs={'placeholder': '비밀번호(4자리 이상)'}
         ))
+
+
+class SignupForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+    password1 = forms.CharField(widget=forms.PasswordInput)
+    profile_image = forms.ImageField()
+    short_desc = forms.CharField()
