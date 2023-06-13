@@ -37,35 +37,12 @@ def signup_view(request):
     if request.method == 'POST':
         form = SignupForm(data = request.POST, files=request.FILES)
         if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            password1 = form.cleaned_data['password1']
-            profile_image = form.cleaned_data['profile_image']
-            short_desc = form.cleaned_data['short_desc']
-
-            if password != password1:
-                form.add_error('password1' , '비밀번호가 맞지 않습니다.')
-
-            if User.objects.filter(username = username).exists():
-                form.add_error('username', '이미 존재하는 사용자입니다.')
-
-            if form.errors:
-                context={
-                    'form':form
-                }    
-                return render(request, 'signup_view.html' , context)
-            else:
-                user = User.objects.create_user(
-                    username = username,
-                    password = password1,
-                    profile_image = profile_image,
-                    short_desc = short_desc
-                )
-                login(request , user)
-                return redirect('feeds')
+            user = form.save()
+            login(request , user)
+            return redirect('feeds')
     else:
         form = SignupForm()
-        context= {
-            'form' : form
-        }
-        return render(request, 'signup_view.html' , context)
+    context= {
+        'form' : form
+    }
+    return render(request, 'signup_view.html' , context)
