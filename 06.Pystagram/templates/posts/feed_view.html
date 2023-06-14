@@ -3,6 +3,7 @@
 <nav>
     <h1><a href="{% url 'feeds' %}">Pystagram</a></h1>
     <a href="{% url 'logout' %}">logout</a>
+    <a href="{% url 'addPost' %}">AddPost</a>
 </nav>
 <div id="feeds" class="post-container">
     {% for post in posts %}
