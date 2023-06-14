@@ -21,13 +21,13 @@ def login_view(request):
         context= {
             'form' : form
         }
-        return render(request , 'login_view.html' , context)
+        return render(request , 'users/login_view.html' , context)
     else:
         form = LoginForm()
         context= {
             'form' : form
         }
-        return render(request , 'login_view.html' , context)
+        return render(request , 'users/login_view.html' , context)
     
 def logout_view(request):
     logout(request)
@@ -45,4 +45,4 @@ def signup_view(request):
     context= {
         'form' : form
     }
-    return render(request, 'signup_view.html' , context)
+    return render(request, 'users/signup_view.html' , context)
