@@ -3,6 +3,7 @@
 <nav>
     <h1><a href="{% url 'feeds' %}">Pystagram</a></h1>
     <a href="{% url 'logout' %}">Logout</a>
+    <a href="{% url 'addPost' %}">Add Post</a>
 </nav>
 <div id="feeds" class="post-container">
     {% for post in posts %}
@@ -39,6 +40,12 @@
                     <li>
                         <span>{{comment.user.username}}</span>
                         <span>{{comment.content}}</span>
+                        {% if user == comment.user %}
+                        <form method="POST" action="{% url 'removeComment' comment_id=comment.id %}">
+                            {% csrf_token %}
+                            <button type="submit">삭제</button>
+                        </form>
+                    {% endif %}
                     </li>
                 {% endfor %}
             </ul>
