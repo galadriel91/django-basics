@@ -1,5 +1,10 @@
 from django.shortcuts import render
+from .models import Post
 
 # Create your views here.
 def feeds_view(request):
-    return render(request , 'posts/feeds_view.html')
+    posts = Post.objects.all()
+    context={
+        'posts':posts
+    }
+    return render(request , 'posts/feeds_view.html', context)
