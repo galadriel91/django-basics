@@ -41,7 +41,6 @@ def signup_view(request):
     }
     return render(request, 'users/signup_view.html' , context)
 
-
 def logout_view(request):
     logout(request)
     return redirect('login')
